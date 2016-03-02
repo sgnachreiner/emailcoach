@@ -1,0 +1,12 @@
+<template name="emailArea">
+  <strong>Send to:</strong>
+  <input name="toEmail" id="toEmail" type="text" value="{{toEmail}}" placeholder="e.g. mzuckerberg@facebook.com" class="form-control">
+  <p contenteditable="true" id="greeting">{{greeting}}</p>
+  <p contenteditable="true" id="well-wishes">{{well_wishes}}</p>
+  <p contenteditable="true" id="introduction">{{introduction}}</p>
+  <p contenteditable="true" id="email-body">{{email_body}}</p>
+  <p contenteditable="true" id="signoff-word">{{signoff_word}}</p>
+  <button id="start-over">Start over</button>
+  <button id="save-draft-btn">Save draft</button>
+  <button id="send-email-btn">Send email</button>
+</template>

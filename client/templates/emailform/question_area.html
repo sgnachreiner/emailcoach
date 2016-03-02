@@ -1,0 +1,87 @@
+<template name="questionArea">
+  <h3 id="question-header">Answer the following questions to create your email template:</h3>
+  {{#if showQuestion 1}}
+    {{> howWellYouKnowThem}}
+  {{/if}}
+  {{#if showQuestion 2}}
+    {{> lastTimeYouSpoke}}
+  {{/if}}
+  {{#if showQuestion 3}}
+    {{> emailType}}
+  {{/if}}
+  {{#if showQuestion 4}}
+    {{> genderPronouns}}
+  {{/if}}
+  {{#if showQuestion 5}}
+    {{> signoffChoice}}
+  {{/if}}
+  {{#if showQuestion 6}}
+    <p>No more questions from us. Get to work on your template!</p>
+  {{/if}}
+</template>
+
+<template name="howWellYouKnowThem">
+  <p>How well do you know the email recipient?</p>
+  <select name="familiarity" id="familiarity">
+    <option value="never-met">We've never met</option>
+    <option value="met-once-or-twice">We've met briefly once or twice</option>
+    <option value="know-names">We know each others' names</option>
+    <option value="colleague">We are friends or colleagues</option>
+  </select>
+  <p>What do you want the tone of the email to be?</p>
+  <select name="tone" id="tone">
+    <option value="formal">Formal</option>
+    <option value="informal">Informal</option>
+    <option value="unsure">I don't know</option>
+  </select>
+  <br/>
+  <br/>
+  <button class="submit">Next question</button>
+</template>
+
+<template name="lastTimeYouSpoke">
+  <p>When was the last time you spoke to the recipient?</p>
+  <select name="last-contact" id="last-contact">
+    <option value="recently">In the past 6 months</option>
+    <option value="while-ago">Over 6 months ago</option>
+  </select>
+  <br/>
+  <br/>
+  <button class="submit">Next question</button>
+</template>
+
+<template name="emailType">
+  <p>What type of email do you want to write?</p>
+  <select name="type" id="type">
+    <option value="conversation">Request for conversation</option>
+    <option value="networking">Request for them to introduce you to someone else</option>
+  </select>
+  <br/>
+  <br/>
+  <button class="submit">Next question</button>
+</template>
+
+<template name="genderPronouns">
+  <p>How would you refer to the person you'd like to connect with?</p>
+  <select name="gender-pronouns" id="gender-pronouns">
+    <option value="him">He/him</option>
+    <option value="her">She/her</option>
+    <option value="them">They/them</option>
+  </select>
+  <br/>
+  <br/>
+  <button class="submit">Next question</button>
+</template>
+
+<template name="signoffChoice">
+  <p>How do you want to sign your email?</p>
+  <select name="signoff" id="signoff">
+    <option value="consideration">Thank you for your consideration</option>
+    <option value="best">Best</option>
+    <option value="thanks">Thanks</option>
+    <option value="cheers">Cheers</option>
+  </select>
+  <br/>
+  <br/>
+  <button class="submit">Finish template</button>
+</template>
