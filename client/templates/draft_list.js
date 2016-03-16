@@ -14,12 +14,19 @@ Template.draftList.events({
   	var draft = {
       sender: Meteor.userId(),
       toEmail: "",
+      familiarity_level: "",
+      tone_choice: "",
+      last_contact: "",
+      email_type: "",
+      signoff: "",
       greeting: "Your greeting will go here",
       well_wishes: "",
       introduction: "",
       email_body: "Your email body will go here",
       signoff_word: "Your signoff will go here"
     };
+
+    console.log(draft);
 
     Meteor.call('draftInsert', draft, function(error, result) {
       if (error) {
@@ -31,6 +38,7 @@ Template.draftList.events({
       setShowingNow(3, false);
       setShowingNow(4, false);
       setShowingNow(5, false);
+      setShowingNow(6, false);
 
       Router.go('emailForm', {_id: result._id});
     });

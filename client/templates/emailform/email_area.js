@@ -7,13 +7,19 @@ Template.emailArea.events({
   'click #save-draft-btn': function(e) {
     e.preventDefault();
 
-    EmailDrafts.update({_id: this._id}, {$set: {toEmail: $('#toEmail').val(), greeting: $('#greeting').text(), well_wishes: $('#well-wishes').text(), introduction: $('#introduction').text(), email_body: $('#email-body').text(), signoff_word: $('#signoff-word').text()}});
+    greeting = $('#greeting').text();
+    well_wishes = $('#well-wishes').text();
+    introduction = $('#introduction').text();
+    email_body = $('#email-body').text();
+    signoff_word = $('#signoff-word').text();
 
     document.getElementById("greeting").innerHTML = '';
     document.getElementById("well-wishes").innerHTML = '';
     document.getElementById("introduction").innerHTML = '';
     document.getElementById("email-body").innerHTML = '';
     document.getElementById("signoff-word").innerHTML = '';
+
+    EmailDrafts.update({_id: this._id}, {$set: {toEmail: $('#toEmail').val(), greeting: greeting, well_wishes: well_wishes, introduction: introduction, email_body: email_body, signoff_word: signoff_word}});
   },
   'click #start-over': function(e) {
     e.preventDefault();

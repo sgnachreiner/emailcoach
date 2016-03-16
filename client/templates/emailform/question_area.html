@@ -22,18 +22,29 @@
 
 <template name="howWellYouKnowThem">
   <p>How well do you know the email recipient?</p>
-  <select name="familiarity" id="familiarity">
+  <!-- <select name="familiarity" id="familiarity">
     <option value="never-met">We've never met</option>
     <option value="met-once-or-twice">We've met briefly once or twice</option>
-    <option value="know-names">We know each others' names</option>
-    <option value="colleague">We are friends or colleagues</option>
-  </select>
+    <option value="know-names">We see each other semi-regularly (or did at one point in time)</option>
+    <option value="colleague">We are friends or close colleagues</option>
+  </select> -->
+  <form>
+      <input type="radio" name="familiarity-level" value="never-met"> We've never met<br>
+      <input type="radio" name="familiarity-level" value="met-once-or-twice"> We've met briefly once or twice<br>
+      <input type="radio" name="familiarity-level" value="see-regularly"> We see each other semi-regularly (or did at one point in time)<br>
+      <input type="radio" name="familiarity-level" value="colleague"> We are friends or close colleagues<br>
+  </form>
   <p>What do you want the tone of the email to be?</p>
-  <select name="tone" id="tone">
+  <!-- <select name="tone" id="tone">
     <option value="formal">Formal</option>
     <option value="informal">Informal</option>
     <option value="unsure">I don't know</option>
-  </select>
+  </select> -->
+  <form>
+      <input type="radio" name="tone-choice" value="formal"> Formal<br>
+      <input type="radio" name="tone-choice" value="informal"> Informal<br>
+      <input type="radio" name="tone-choice" value="dont-know"> I don't know<br>
+  </form>
   <br/>
   <br/>
   <button class="submit">Next question</button>
@@ -41,10 +52,14 @@
 
 <template name="lastTimeYouSpoke">
   <p>When was the last time you spoke to the recipient?</p>
-  <select name="last-contact" id="last-contact">
-    <option value="recently">In the past 6 months</option>
-    <option value="while-ago">Over 6 months ago</option>
-  </select>
+  <!-- <select name="last-contact" id="last-contact">
+    <option value="recently">In the past 3 months</option>
+    <option value="while-ago">Over 3 months ago</option>
+  </select> -->
+  <form>
+      <input type="radio" name="last-contact" value="recent"> In the past 3 months<br>
+      <input type="radio" name="last-contact" value="not-recent"> Over 3 months ago<br>
+  </form>
   <br/>
   <br/>
   <button class="submit">Next question</button>
@@ -52,10 +67,18 @@
 
 <template name="emailType">
   <p>What type of email do you want to write?</p>
-  <select name="type" id="type">
+  <!-- <select name="type" id="type">
     <option value="conversation">Request for conversation</option>
-    <option value="networking">Request for them to introduce you to someone else</option>
-  </select>
+    {{#if youKnowThem}}
+      <option value="networking">Request for them to introduce you to someone else</option>
+    {{/if}}
+  </select> -->
+  <form>
+      <input type="radio" name="email-type" value="conversation"> Request for conversation<br>
+      {{#if youKnowThem}}
+        <input type="radio" name="email-type" value="introduction"> Request for them to introduce you to someone else<br>
+      {{/if}}
+  </form>
   <br/>
   <br/>
   <button class="submit">Next question</button>
@@ -63,11 +86,16 @@
 
 <template name="genderPronouns">
   <p>How would you refer to the person you'd like to connect with?</p>
-  <select name="gender-pronouns" id="gender-pronouns">
+  <!-- <select name="gender-pronouns" id="gender-pronouns">
     <option value="him">He/him</option>
     <option value="her">She/her</option>
     <option value="them">They/them</option>
-  </select>
+  </select> -->
+  <form>
+      <input type="radio" name="gender" value="him"> He/him<br>
+      <input type="radio" name="gender" value="her"> She/her<br>
+      <input type="radio" name="gender" value="them"> They/them<br>
+  </form>
   <br/>
   <br/>
   <button class="submit">Next question</button>
@@ -75,12 +103,33 @@
 
 <template name="signoffChoice">
   <p>How do you want to sign your email?</p>
-  <select name="signoff" id="signoff">
-    <option value="consideration">Thank you for your consideration</option>
-    <option value="best">Best</option>
-    <option value="thanks">Thanks</option>
-    <option value="cheers">Cheers</option>
-  </select>
+  <!-- <select name="signoff" id="signoff">
+      {{#if isFormal}}
+        <option value="consideration">Thank you for your consideration</option>
+        <option value="best-regards">Best regards</option>
+        <option value="thank-you">Thank you</option>
+        <option value="sincerely">Sincerely</option>
+      {{else}}
+        <option value="dash">-</option>
+        <option value="thanks">Thanks</option>
+        <option value="best">Best</option>
+        <option value="cheers">Cheers</option>
+      {{/if}}
+  </select> -->
+
+  <form>
+      {{#if isFormal}}
+        <input type="radio" name="signoff" value="consideration"> Thank you for your consideration<br>
+        <input type="radio" name="signoff" value="best-regards"> Best regards<br>
+        <input type="radio" name="signoff" value="thank-you"> Thank you<br>
+        <input type="radio" name="signoff" value="sincerely"> Sincerely<br>
+      {{else}}
+        <input type="radio" name="signoff" value="dash"> -<br>
+        <input type="radio" name="signoff" value="thanks"> Thanks<br>
+        <input type="radio" name="signoff" value="best"> Best<br>
+        <input type="radio" name="signoff" value="cheers"> Cheers<br>
+      {{/if}}
+  </form>
   <br/>
   <br/>
   <button class="submit">Finish template</button>
